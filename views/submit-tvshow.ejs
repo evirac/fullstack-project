@@ -1,0 +1,83 @@
+<div class="px-4 py-5 my-5 text-center">
+  <h1 class="display-5 fw-bold">Share a TV Show</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class="lead">Know a TV that is missing? Fill up this form and add it to share with everyone!</p>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+
+  <% if(infoSubmitObj != '') { %>
+    <div class="col-8 alert alert-success" role="alert">
+      <%= infoSubmitObj %>
+    </div>
+  <% } %>
+
+  <% if(infoErrorsObj != '') { %>
+    <div class="col-8 alert alert-danger" role="alert">
+      <%= infoErrorsObj[0].message %>
+    </div>
+  <% } %>
+
+  <div class="col-8">
+
+    <form action="/submit-tvshow" enctype="multipart/form-data" method="POST">
+    
+      <div class="row g-3">
+
+        <div class="col-12">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" name="email" id="email" class="form-control">
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">TV Show Name</label>
+          <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        
+        <div class="col-12">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="description" id="description" class="form-control" cols="30" rows="4"></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="name" class="form-label">Tags</label><br>
+          <small>Example: History</small>
+          <div class="tagList">
+            <div class="tagDiv mb-1">
+              <input type="text" name="tags" class="form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button type="button" class="btn btn-outline-primary" id="addTagsBtn">+ Tags</button>
+        </div>
+
+        <div class="col-12">
+          <label for="category">Select Category</label>
+          <select class="form-select form-control" name="category" aria-label="Category">
+            <option selected>Select Category</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Mystery">Mystery</option>
+            <option value="Drama">Drama</option>
+            <option value="Action">Mexican</option>
+            <option value="Indian">Indian</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label for="image">Poster Image</label>
+          <input type="file" class="form-control" name="image" accept="image/*">
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Submit TV Show</button>
+        </div>
+
+      </div>
+    
+    </form>
+
+  </div>
+</div>
